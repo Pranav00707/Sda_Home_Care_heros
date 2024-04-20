@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+           
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Plumber</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Electrician</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Welder</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">AC Repairing</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Mechanic</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">LPG Gas Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Kitchen Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Carpenter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Labour</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Maid</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Painter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Transport Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Supplier</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Filter Repairing</a>
+        </div>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+             	<a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+         <li class="nav-item dropdown">
+    	<a class="nav-link active"  th:href="@{/goToSignupOptions}">Signup</a>
+    
+</li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 bg-light border border-2 border-dark py-2 px-5 rounded mb-5">
+                <div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered</div>
+				</div>
+                <h2 class="text-center mb-4">Signup Form for User</h2>
+
+                <form action="#" th:action="@{/signup}" th:object="${user}" method="POST" enctype="multipart/form-data">
+                    <!-- Profile Photo Upload -->
+                    <div class="form-group">
+                        <label for="profilePhoto">Profile Photo</label>
+                        <input type="file" th:field="*{photo}" class="form-control-file" id="profilePhoto">
+                    </div>
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your Firstname and Lastname" required autofocus="autofocus">
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="name">Email</label>
+                        <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Enter your Email" required autofocus="autofocus">
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="form-group">
+                        <label for="contact">Contact</label>
+                        <input type="text" th:field="*{contact}" class="form-control" id="contact" placeholder="Enter your contact number" required autofocus="autofocus">
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Password" required autofocus="autofocus">
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="form-group">
+						<label for="about">Location</label>
+						<input type="text" th:field="*{location}" class="form-control" id="location" placeholder="Enter your location" required autofocus="autofocus">
+					</div>
+					
+					                    <div class="form-group">
+						<label for="about">Pincode</label>
+						<input type="number" th:field="*{pincode}" class="form-control" id="pincode" placeholder="Enter your pincode" required autofocus="autofocus">
+					</div>
+					
+                    <div class="d-flex justify-content-center mb-2">
+                    <button type="submit" class="btn btn-primary">Signup</button>
+                    <div class="ml-3">
+                    <p>Already Signed up? <a th:href="@{/login}">Login</a></p>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

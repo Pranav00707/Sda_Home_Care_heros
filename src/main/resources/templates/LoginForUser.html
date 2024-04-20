@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 5%;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active " th:href="@{/}">Home</a>
+            </li>
+           
+           
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+             	<a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+         <li class="nav-item dropdown">
+    	<a class="nav-link active"  th:href="@{/goToSignupOptions}">Signup</a>
+    
+</li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Login Form for User</h2>
+                </div>
+                
+                <div class="card-body px-5">
+                    <form th:action="@{/login}" method="post">
+             <p th:if="${param.error}" class="text-danger">Invalid email or password. Please try again.</p> 
+                        <div th:if="${param.logout}" class="alert alert-info">You've been logged out</div>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                   placeholder="Enter your registered email">
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                   placeholder="Password">
+                        </div>
+                        
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <div class="ml-3"><p class="">Not Registered? <a th:href="@{/signup}">Register</a></p></div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

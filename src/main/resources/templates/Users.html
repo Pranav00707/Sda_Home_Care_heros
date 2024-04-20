@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Career</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">C</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+             	<a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+         <li class="nav-item dropdown">
+    	<a class="nav-link active"  th:href="@{/goToSignupOptions}">Signup</a>
+    
+</li>
+        </ul>
+    </div>
+</nav>
+
+	<h1>Users</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Contact</th>
+			<th>Location</th>
+		</tr>
+		<tr th:each="user: ${users}">
+			<td th:text="${user.name}">Name</td>
+			<td th:text="${user.contact}">Contact</td>
+			<td th:text="${user.location}">Location</td>
+		</tr>
+	</table>
+    
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

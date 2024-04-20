@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Head content... -->
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
+      <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<style>
+ body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            margin-bottom: 60px; 
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px; 
+ 
+         }
+        
+         .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+       margin-top: 60px;
+    }
+    .footer p {
+      margin-bottom: 20px;
+    }
+</style>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" th:href="@{/}">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+           
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Plumber</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Electrician</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Welder</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">AC Repairing</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Mechanic</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">LPG Gas Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Kitchen Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Carpenter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Labour</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Maid</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Painter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Transport Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Supplier</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Filter Repairing</a>
+        </div>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+             	<a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+         <li class="nav-item">
+    	<a class="nav-link active"  th:href="@{/goToSignupOptions}">Signup</a>
+    
+</li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- Navbar content... -->
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 bg-light border border-2 border-dark p-4 rounded mt-5">
+            <h2 class="text-center mb-4">Login Form for Worker</h2>
+
+            <form th:action="@{/loginWorker}" method="post" >
+             <div th:if="${param.error}" class="alert alert-danger">Invalid username or password.</div>
+                        <div th:if="${param.logout}" class="alert alert-info">You've been logged out</div>                <!-- Email -->
+             <!-- eMAIL--->
+                <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" name="username"
+                                   placeholder="Enter your registered email">
+                       
+                    </div>
+               
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <div class="invalid-feedback">
+                        Please enter your password.
+                    </div>
+                </div>
+
+               <div class="d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary">Login</button>
+    <div class="ml-3">
+        <p th:if="${loginError}" class="text-danger">Login failed. Please try again.</p>
+        <p>Not Registered? <a th:href="@{/addNewWorker}">Register</a></p>
+    </div>
+</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>About Us</h4>
+        <p>We are dedicated to connecting customers with skilled and reliable workers to enhance the home care experience.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Contact Information</h4>
+        <p>Email: homecareheros@gmail.com<br>Phone: +91 9087786567</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Follow Us</h4>
+        <p>Stay connected with us on social media for updates and news.</p>
+        <i class="fab fa-facebook-square fa-2x"></i>
+        <i class="fab fa-twitter-square fa-2x"></i>
+        <i class="fab fa-instagram-square fa-2x"></i>
+      </div>
+    </div>
+  </div>
+  <p>&copy; 2024 HomeCareHeros. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+					
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+   
+</body>
+</html>

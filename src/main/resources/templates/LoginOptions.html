@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("leaves.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #007bff;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            background-color: #495057;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin-bottom: 20px;
+        }
+
+        .social-icons i {
+            margin: 0 10px;
+            color: #fff;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/}">Home</a>
+            </li>
+           
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link active" th:href="@{/goToSignupOptions}">Signup</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Login Options</h2>
+                </div>
+                <div class="card-body px-5">
+                    <div class="d-grid gap-2">
+                        <a th:href="@{/login}" class="btn btn-primary btn-lg mr-1">Login as a User</a>
+                        <a th:href="@{/goToWorkerLogin}" class="btn btn-secondary btn-lg mt-2">Login as a Worker</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>About Us</h4>
+                <p>We are dedicated to connecting customers with skilled and reliable workers to enhance the home care experience.</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Contact Information</h4>
+                <p>Email: info@homecareheros.com<br>Phone: +91 9087786567</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Follow Us</h4>
+                <p>Stay connected with us on social media for updates and news.</p>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fab fa-instagram-square"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>&copy; 2024 HomeCareHeros. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        .jumbotron h1 {
+            font-size: 36px; /* Increase font size */
+            font-weight: bold; /* Make header bold */
+        }
+
+        .card-title {
+            font-size: 24px; /* Increase font size */
+            font-weight: bold; /* Make headers bold */
+            transition: color 0.3s; /* Add transition for smooth hover effect */
+        }
+
+        .card-title:hover {
+            color: #007bff; /* Change text color on hover */
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAnonymous()">
+                <!-- Show these links only to non-logged-in users -->
+                
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" class="nav-link active" th:href="@{/logout}" >LogOut</a>
+                </li>
+          
+              
+            </sec:authorize>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAuthenticated()">
+                <!-- Show this link only to logged-in users -->
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/profile}">Profile</a>
+                </li>
+            </sec:authorize>
+        </ul>
+    </div>
+</nav>
+<!-- Navbar content... -->
+
+<div class="container mt-5">
+
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to the Worker Home Page</h1>
+        <p class="lead">Connecting skilled workers with those in need of various services.</p>
+    </div>
+
+    <div class="card-deck">
+
+        <!-- What We Do Card -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">What We Do</h5>
+                <p class="card-text">
+                    We connect skilled workers with people in need of various services. Our platform brings together
+                    professionals from different categories to provide reliable and efficient home care services.
+                </p>
+            </div>
+        </div>
+
+        <!-- Purpose Card -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Purpose of This Site</h5>
+                <p class="card-text">
+                    Our mission is to simplify the process of finding skilled workers for your home care needs.
+                    Whether you need a plumber, electrician, mechanic, or any other service, we've got you covered.
+                </p>
+            </div>
+        </div>
+
+        <!-- Why Work With Us Card -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Why Work With Us</h5>
+                <p class="card-text">
+                    Joining our platform offers you:
+                    <ul>
+                        <li>Access to a wide network of customers</li>
+                        <li>Flexible work schedules</li>
+                        <li>Fair compensation and quick payouts</li>
+                        <li>Opportunity to showcase your skills and grow your client base</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>About Us</h4>
+        <p>We are dedicated to connecting customers with skilled and reliable workers to enhance the home care experience.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Contact Information</h4>
+        <p>Email: homecareheros@gmail.com<br>Phone: +91 9087786567</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Follow Us</h4>
+        <p>Stay connected with us on social media for updates and news.</p>
+        <i class="fab fa-facebook-square fa-2x"></i>
+        <i class="fab fa-twitter-square fa-2x"></i>
+        <i class="fab fa-instagram-square fa-2x"></i>
+      </div>
+    </div>
+  </div>
+  <p>&copy; 2024 HomeCareHeros. All rights reserved.</p>
+</footer>-->
+
+
+<!-- Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

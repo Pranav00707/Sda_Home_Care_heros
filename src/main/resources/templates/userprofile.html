@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		p{
+			font-size: 25px;
+		}
+		.prodiv{
+			background-color: #D7C49EFF;
+			padding:20px 20px;
+			border-radius: 25px;
+	}
+		.titlediv{
+			background-color: #343148FF;
+			padding:5px 385px 5px 385px;
+			border-radius: 25px;
+		}
+		.titlediv h1{
+			color:#D7C49EFF;
+		}
+		b{
+			color:#343148FF;
+		}
+		span{
+			font-weight: 500;
+		}
+		.a-edit{
+			background-color: #343148FF;
+			color:#D7C49EFF;
+			font-size: 23px;
+			margin-top:7px;
+			border-radius: 5px;
+			padding:3px 20px;
+			border:none
+		}
+	</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/signup/userhome}">Home</a>
+            </li>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAnonymous()">
+                <!-- Show these links only to non-logged-in users -->
+                
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" class="nav-link active" th:href="@{/logout}" >LogOut</a>
+                </li>
+          
+              
+            </sec:authorize>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAuthenticated()">
+                <!-- Show this link only to logged-in users -->
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/profile}">Profile</a>
+                </li>
+            </sec:authorize>
+        </ul>
+    </div>
+</nav>
+
+	<div class="d-flex flex-column align-items-center" style="margin-top:100px">
+		<div class="titlediv">
+		<h1><span th:text="${user.name}"></span>'s Profile</h1>
+		</div>
+		
+		<div class="prodiv container d-flex justify-content-center mt-2">
+			<div class="mr-5">
+				<img style="width:200px; height:200px; border-radius: 50%; margin-top:10px; border:6px solid #343148FF; margin-top:12px" th:src="@{'data:image/jpeg;base64,' + ${userImage}}" alt="User Image"/>
+			</div>
+			<div class="mt-2">
+		<p><b>Name:</b> <span th:text="${user.name}"></span></p>
+		<p><b>Email:</b> <span th:text="${user.email}"></span></p>
+		<p><b>Contact:</b> <span th:text="${user.contact}"></span></p>
+		<p><b>Location:</b> <span th:text="${user.location}"></span></p>
+		</div>
+		</div>
+		<a class="a-edit" th:href="@{/signup/showUpdateForm}">Edit</a>
+		<!-- <div th:if="${param.success}" class="mt-2">
+					<div class="alert alert-info">You've successfully updated your profile :)</div>
+				</div>-->
+	</div>
+	
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

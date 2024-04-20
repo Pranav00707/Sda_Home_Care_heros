@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plumbers</title>
+    <!-- Add necessary head content -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">HomeCareHeros</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+              
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+                </li>
+                <!-- Check if the user is logged in -->
+                <sec:authorize access="isAnonymous()">
+                    <!-- Show these links only to non-logged-in users -->
+                    
+                    <li class="nav-item">
+                        <a sec:authorize="isAuthenticated()" class="nav-link active" th:href="@{/logout}" >LogOut</a>
+                    </li>
+              
+                  
+                </sec:authorize>
+                <!-- Check if the user is logged in -->
+                <sec:authorize access="isAuthenticated()">
+                    <!-- Show this link only to logged-in users -->
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/profile}">Profile</a>
+                    </li>
+                </sec:authorize>
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="container mt-5">
+    <h2 class="text-center">Plumbers</h2>
+    
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div th:each="plumber : ${plumbers}" class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${plumber.name}"></h5>
+                    <p class="card-text" th:text="${plumber.mobileNumber}"></p>
+                    <a th:href="@{'/chat/' + ${plumber.id}}" class="btn btn-primary">Start Chat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

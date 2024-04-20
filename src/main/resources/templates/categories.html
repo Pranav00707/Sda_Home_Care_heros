@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		select{
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAnonymous()">
+                <!-- Show these links only to non-logged-in users -->
+                
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" class="nav-link active" th:href="@{/logout}" >LogOut</a>
+                </li>
+          
+              
+            </sec:authorize>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAuthenticated()">
+                <!-- Show this link only to logged-in users -->
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/profile}">Profile</a>
+                </li>
+            </sec:authorize>
+        </ul>
+    </div>
+</nav>
+	<div class="d-flex justify-content-center mt-5">
+	<form action="/allworkers" method="get">
+		<select name="categoryId">
+			<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.category}">
+			</option>
+		</select>
+		<button class="btn btn-outline-primary mb-2" type="submit">Show Workers</button>
+	</form>
+    </div>
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

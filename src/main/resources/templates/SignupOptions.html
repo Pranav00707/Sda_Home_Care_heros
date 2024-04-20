@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("leaves.png");
+        }
+
+        .div2 {
+            margin-top: 140px;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+           
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Plumber</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Electrician</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Welder</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">AC Repairing</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Mechanic</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">LPG Gas Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Kitchen Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Carpenter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Labour</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Maid</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Painter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Transport Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Supplier</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Filter Repairing</a>
+        </div>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+             	<a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+         <li class="nav-item dropdown">
+    	<a class="nav-link active"  th:href="@{/goToSignupOptions}">Signup</a>
+    
+</li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 div2">
+            <div class="text-center mb-4">
+                <h2>Signup Options</h2>
+                <p>Select an option to proceed:</p>
+            </div>
+            <!-- Signup Links -->
+            <div class="d-grid gap-2">
+                <a th:href="@{/signup}" class="btn btn-primary btn-lg ml-4 mr-1">Signup as a User</a>
+                <a th:href="@{/addNewWorker}" class="btn btn-secondary btn-lg">Signup as a Worker</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

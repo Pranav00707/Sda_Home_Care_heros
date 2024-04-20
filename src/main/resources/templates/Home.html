@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
+      <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script type="text/javascript">
+
+ 
+
+  </script>
+  <!-- Custom CSS -->
+    <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .jumbotron {
+      background-color: rgb(192, 192, 192);
+      color: #fff;
+      text-align: center;
+    }
+    .features {
+      padding: 50px 0;
+      background-color: #fff;
+    }
+    .feature-item {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #007bff;
+      transition: color 0.3s ease-in-out;
+    }
+    .feature-icon:hover {
+      color: #0056b3; /* Change to your desired hover color */
+    }
+    .feature-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+    }
+    .footer p {
+      margin-bottom: 20px;
+    }
+    .search-bar {
+      margin-top: 20px;
+    }
+    .search-bar input {
+      border-radius: 25px;
+      padding: 10px 20px;
+    }
+    .search-bar button {
+      border-radius: 25px;
+      padding: 10px 20px;
+    }
+    .dropdown-menu{
+    text-align: center;
+    }
+      .search-bar {
+            margin-top: 20px;
+        }
+
+        .search-bar input {
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+
+        .search-bar button {
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+
+        .dropdown-menu {
+            text-align: center;
+        }
+        .category-card img {
+    width: 100%; /* Make the image take 100% of the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Set a maximum height if needed */
+    object-fit: cover; /* Ensure the image covers the container without stretching */
+    border-radius: 8px; /* Optional: Add border-radius for a rounded corner effect */
+    margin-bottom: 10px; /* Add margin at the bottom of each image */
+}
+
+.category-card h4 {
+    margin-top: 10px; /* Add margin at the top of the heading */
+}
+
+.category-card a.btn {
+    margin-top: 10px; /* Add margin at the top of the button */
+}
+body {
+    
+}
+
+.container {
+    padding: 20px; /* Add padding to the container for spacing */
+}
+
+.category-card {
+    text-align: center;
+    padding: 20px; /* Add padding to the category card for spacing */
+}
+
+.category-card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.category-card h4,
+.category-card p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.category-card a.btn {
+    margin-top: 10px;
+}
+  </style>
+  
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" th:href="@{/}">HomeCareHeros
+    
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+        
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+             	<a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+         <li class="nav-item">
+    	<a class="nav-link active"  th:href="@{/goToSignupOptions}">Signup</a>
+    
+</li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- Jumbotron -->
+<div class="jumbotron  text-dark  bg-white" >
+ <img th:src="@{/images/homecarelogo.png}"  alt="Logo" width="500" height="300">
+  <h1 class="display-4">Welcome to HomeCareHeros</h1>
+  <p class="lead">Connecting customers with skilled workers for a better home care experience. Find reliable professionals for all your home service needs.</p>
+  <div class="text-center">
+        <b><h3>Are you a working professional? Work with us</h3></b>
+        <a class="btn btn-primary mt-3" th:href="@{/goToWorkerLogin}">Join Now</a>
+    </div>
+</div>
+
+
+   <div class="container mt-5 pt-4">
+       <div class="row">
+            <div class="col-md-12 text-center summary-section">
+                <h2>We Connect Customers with Professional Workers</h2>
+                <p>Our platform brings together skilled workers and customers, ensuring professional services for various home needs. Explore our categories below and connect with the right professionals for your requirements.</p>
+            </div>
+        </div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/plumber2.jpg}" alt="MyImage">
+                <h4>Plumber</h4>
+                 <p>Expert in fixing plumbing issues. Available for residential and commercial projects.</p>
+                <a class="btn btn-primary" th:href="@{/login}" >Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/Electrician.jpg}" alt="Electrician">
+                <h4>Electrician</h4>
+                <p> <p>Skilled in electrical installations and repairs for all home electric applinces</p>
+                <a class="btn btn-primary" th:href="@{/login}" >Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/welder.jpg}" alt="Welder">
+                <h4>Welder</h4>
+                <p>Specialized in providing high-quality welding services for both structural and decorative projects.</p>
+                
+                <a class="btn btn-primary" th:href="@{/login}" >Explore</a>
+            </div>
+        </div>
+
+        <!-- Add more columns for other categories -->
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/Acrepair.jpg}" alt="AC Repairing">
+                <h4>AC Repairing</h4>
+                <p>Experienced in air conditioning system repairs, offering comprehensive knowledge in diagnosing and resolving issues for residential and commercial AC units.</p>
+                
+                <a class="btn btn-primary" th:href="@{/login}" >Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/mechanic.jpg}" alt="Mechanic">
+                <h4>Mechanic</h4>
+                <p>Expert in automotive mechanics with a comprehensive skill set in diagnosing and repairing various vehicle issues.</p>
+                
+                
+                <a class="btn btn-primary" th:href="@{/login}" >Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/LPG.png}" alt="LPG Gas">
+                <h4>LPG Gas</h4>
+                <p>Experienced in air conditioning system repairs, offering comprehensive knowledge in diagnosing and resolving issues for residential and commercial AC units..</p>
+                
+                <a class="btn btn-primary" th:href="@{/login}" >Explore</a>
+            </div>
+        </div>
+
+
+ <div class="col-md-4">
+            <div class="category-card">
+                <img  th:src="@{/images/kitchenservices.jpg}" alt="LPG Gas">
+                <h4>Kitchen Services</h4>
+                <p>Skilled in a wide range of kitchen services, offering expertise in installations and repairs for kitchen appliances and fixtures.</p>
+                
+                <a class="btn btn-primary" href="#" onclick="goToSignupOptions('LPG Gas')">Explore</a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="category-card">
+                <img  th:src="@{/images/waterfilterreparing.jpg}" alt="waterfilter reparing">
+                <h4>Water filter Reparing</h4>
+                <p>Experienced in water filter installations and proficient in repairs for various water filtration systems. </p>
+                
+                <a class="btn btn-primary" href="#" onclick="goToSignupOptions('LPG Gas')">Explore</a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/painter.jpg}" alt="LPG Gas">
+                <h4>Painter</h4>
+                <p> Our skilled painters specialize in transforming spaces with vibrant colors and meticulous attention to detail.</p>
+                <a class="btn btn-primary" href="#" onclick="goToSignupOptions('LPG Gas')">Explore</a>
+            </div>
+            
+            
+  
+        
+        <!-- Add more columns for other categories -->
+    </div>
+</div>
+</div>
+</div>
+	
+	<div class="container features mb-3">
+  <div class="row">
+    <div class="col-md-4 feature-item">
+      <i class="fas fa-users feature-icon"></i>
+      <h3>Skilled Professionals</h3>
+      <p>Connect with experienced and reliable workers for various home care services.</p>
+    </div>
+    <div class="col-md-4 feature-item">
+      <i class="fas fa-comments feature-icon"></i>
+      <h3>Instant Communication</h3>
+      <p>Effortless communication between customers and workers through our platform.</p>
+    </div>
+    <div class="col-md-4 feature-item">
+      <i class="fas fa-clock feature-icon"></i>
+      <h3>Flexible Scheduling</h3>
+      <p>Choose the time that suits you best for the home care services you need.</p>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>About Us</h4>
+        <p>We are dedicated to connecting customers with skilled and reliable workers to enhance the home care experience.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Contact Information</h4>
+        <p>Email: homecareheros@gmail.com</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Follow Us</h4>
+        <p>Stay connected with us on social media for updates and news.</p>
+        <i class="fab fa-facebook-square fa-2x"></i>
+        <i class="fab fa-twitter-square fa-2x"></i>
+        <i class="fab fa-instagram-square fa-2x"></i>
+      </div>
+    </div>
+  </div>
+  <p>&copy; 2024 HomeCareHeros. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and FontAwesome (for icons) -->
+<!-- Bootstrap JS and its dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+<!-- Script for search bar -->
+<script>
+    function searchCategories() {
+        var query = $('#categorySearch').val().toLowerCase();
+        var categories = ["Plumber", "Electrician", "Welder", "AC Repairing", "Mechanic", "LPG Gas Services", "Kitchen Services", "Carpenter", "Labour", "Maid", "Painter", "Transport Services", "Water Supplier", "Water Filter Repairing"];
+        var dropdownMenu = $('#searchResults');
+        
+        dropdownMenu.empty(); // Clear previous results
+
+        if (query.trim() !== '') {
+            var filteredCategories = categories.filter(function (category) {
+                return category.toLowerCase().includes(query);
+            });
+
+            if (filteredCategories.length > 0) {
+                filteredCategories.forEach(function (category) {
+                    var link = $('<a>').addClass('dropdown-item').attr('href', '/goToSignupOptions').text(category);
+                    dropdownMenu.append(link);
+                });
+            } else {
+                var noResults = $('<div>').addClass('dropdown-header').text('No results found');
+                dropdownMenu.append(noResults);
+            }
+
+            // Show the dropdown
+            dropdownMenu.show();
+        } else {
+            // Hide the dropdown if the query is empty
+            dropdownMenu.hide();
+        }
+    }
+
+    // Additional script to hide the dropdown when clicking outside
+    $(document).click(function (event) {
+        var target = $(event.target);
+        if (!target.closest('.search-bar').length) {
+            $('#searchResults').hide();
+        }
+    });
+</script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+					
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+   
+</body>
+</html>

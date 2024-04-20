@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+      <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
+      <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+    
+<style>
+
+
+
+  .summary-section {
+            background-color: #f8f9fa; /* Light gray background color */
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .summary-section h2 {
+            color: #007bff; /* Bootstrap primary color */
+            margin-bottom: 20px;
+            font-weight: bold; /* Make the text bold */
+            transition: color 0.3s ease; /* Add a smooth color transition effect */
+        }
+
+        .summary-section h2:hover {
+            color: #0056b3; /* Darker shade of blue on hover */
+        }
+
+        .summary-section p {
+            color: #495057; /* Bootstrap secondary text color */
+            font-size: 18px;
+        }
+
+
+
+
+
+  .summary-section {
+            background-color: #f8f9fa; /* Light gray background color */
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .summary-section h2 {
+            color: #007bff; /* Bootstrap primary color */
+            margin-bottom: 20px;
+        }
+
+        .summary-section p {
+            color: #495057; /* Bootstrap secondary text color */
+            font-size: 18px;
+        }
+        
+
+.category-card img {
+    width: 100%; /* Make the image take 100% of the container width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 200px; /* Set a maximum height if needed */
+    object-fit: cover; /* Ensure the image covers the container without stretching */
+    border-radius: 8px; /* Optional: Add border-radius for a rounded corner effect */
+    margin-bottom: 10px; /* Add margin at the bottom of each image */
+}
+
+.category-card h4 {
+    margin-top: 10px; /* Add margin at the top of the heading */
+}
+
+.category-card a.btn {
+    margin-top: 10px; /* Add margin at the top of the button */
+}
+body {
+    padding-top: 56px; /* Adjust the padding-top to match the height of the fixed navbar */
+}
+
+.container {
+    padding: 20px; /* Add padding to the container for spacing */
+}
+
+.category-card {
+    text-align: center;
+    padding: 20px; /* Add padding to the category card for spacing */
+}
+
+.category-card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.category-card h4,
+.category-card p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.category-card a.btn {
+    margin-top: 10px;
+}
+
+    #sidebar {
+      height: 100vh;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color:  #495057;
+      padding-top: 60px;
+      transition: all 0.3s;
+    }
+
+    #sidebar a {
+      padding: 10px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: all 0.3s;
+    }
+
+    #sidebar a:hover {
+      background-color: #555;
+    }
+
+    #main-content {
+      transition: margin-left 0.3s;
+      padding: 16px;
+    }
+
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/signup/userhome}">Home</a>
+            </li>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAnonymous()">
+                <!-- Show these links only to non-logged-in users -->
+                
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" class="nav-link active" th:href="@{/logout}" >LogOut</a>
+                </li>
+          
+              
+            </sec:authorize>
+            <!-- Check if the user is logged in -->
+            <sec:authorize access="isAuthenticated()">
+                <!-- Show this link only to logged-in users -->
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/profile}">Profile</a>
+                </li>
+            </sec:authorize>
+        </ul>
+    </div>
+</nav>
+
+
+  <div id="sidebar">
+    <a th:href="@{/signup/userhome}" onclick="toggleSidebar()">Home</a>
+    <a href="#" onclick="toggleSidebar()">Message</a>
+    <a th:href="@{/profile}" onclick="toggleSidebar()">profile</a>
+    <!--<a onclick="toggleSidebar()"><button ><sec:authorize access="isAnonymous()">
+                 Show these links only to non-logged-in users
+                
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" class="nav-link active" th:href="@{/logout}" >LogOut</a>
+                </li>
+          
+              
+            </sec:authorize></button></a>-->
+    <!-- Add more items as needed -->
+  </div>
+
+  <div id="main-content">
+   <button class="btn btn-dark" onclick="toggleSidebar()">
+    <span class="navbar-toggler-icon"></span>
+</button>
+    
+<div class="container mt-5 pt-4">
+       <div class="row">
+            <div class="col-md-12 text-center summary-section">
+                <h2>We Connect Customers with Professional Workers</h2>
+                <p>Our platform brings together skilled workers and customers, ensuring professional services for various home needs. Explore our categories below and connect with the right professionals for your requirements.</p>
+            </div>
+        </div>
+        </div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4" >
+            <div class="category-card" id=1L>
+                <img th:src="@{/images/plumber.jpg}" alt="My Image">
+                <h4>Plumber</h4>
+                 <p>Expert in fixing plumbing issues. Available for residential and commercial projects.</p>
+                <a class="btn btn-primary" th:href="@{/allworkers/{id}(id=${1L})}">Explore</a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="category-card" id=2L>
+                <img th:src="@{/images/Electrician.jpg}" alt="Electrician">
+                <h4>Electrician</h4>
+                <p> <p>Skilled in electrical installations and repairs for all home electric applinces</p>
+                <a class="btn btn-primary" th:href="@{/allworkers/{id}(id=${2L})}">Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card" id=3L>
+                <img th:src="@{/images/welder.jpg}" alt="Welder">
+                <h4>Welder</h4>
+                <p>Specialized in providing high-quality welding services for both structural and decorative projects.</p>
+                
+                <a class="btn btn-primary" th:href="@{/allworkers/{id}(id=${3L})}">Explore</a>
+            </div>
+        </div>
+
+        <!-- Add more columns for other categories -->
+        <div class="col-md-4">
+            <div class="category-card" id=4L>
+                <img th:src="@{/images/Acrepair.jpg}" alt="AC Repairing">
+                <h4>AC Repairing</h4>
+                <p>Experienced in air conditioning system repairs, offering comprehensive knowledge in diagnosing and resolving issues for residential and commercial AC units.</p>
+                
+                <a class="btn btn-primary" th:href="@{/allworkers/{id}(id=${4L})}">Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card" id=5L>
+                <img th:src="@{/images/mechanic.jpg}" alt="Mechanic">
+                <h4>Mechanic</h4>
+                <p>Expert in automotive mechanics with a comprehensive skill set in diagnosing and repairing various vehicle issues.</p>
+                
+                
+                <a class="btn btn-primary" th:href="@{/allworkers/{id}(id=${5L})}">Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/LPG.png}" alt="LPG Gas">
+                <h4>LPG Gas</h4>
+                <p>Experienced in air conditioning system repairs, offering comprehensive knowledge in diagnosing and resolving issues for residential and commercial AC units..</p>
+                
+                <a class="btn btn-primary" href="#" onclick="goToSignupOptions('LPG Gas')">Explore</a>
+            </div>
+        </div>
+
+
+ <div class="col-md-4">
+            <div class="category-card">
+                <img  th:src="@{/images/kitchenservices.jpg}" alt="LPG Gas">
+                <h4>Kitchen Services</h4>
+                <p>Skilled in a wide range of kitchen services, offering expertise in installations and repairs for kitchen appliances and fixtures.</p>
+                
+                <a class="btn btn-primary" href="#" onclick="goToSignupOptions('LPG Gas')">Explore</a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="category-card">
+                <img  th:src="@{/images/waterfilterreparing.jpg}" alt="waterfilter reparing">
+                <h4>Water filter Reparing</h4>
+                <p>Experienced in water filter installations and proficient in repairs for various water filtration systems. </p>
+                
+                <a class="btn btn-primary" href="#" onclick="goToSignupOptions('LPG Gas')">Explore</a>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="category-card">
+                <img th:src="@{/images/painter.jpg}" alt="LPG Gas">
+                <h4>Painter</h4>
+                <p> Our skilled painters specialize in transforming spaces with vibrant colors and meticulous attention to detail.</p>
+                <a class="btn btn-primary" href="#" onclick="goToSignupOptions('LPG Gas')">Explore</a>
+            </div>
+            
+           
+           
+        
+        <!-- Add more columns for other categories -->
+    </div>
+</div>
+</div>
+</div>
+  
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4>About Us</h4>
+        <p>We are dedicated to connecting customers with skilled and reliable workers to enhance the home care experience.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Contact Information</h4>
+        <p>Email: info@homecareheros.com<br>Phone: +91 9087786567</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Follow Us</h4>
+        <p>Stay connected with us on social media for updates and news.</p>
+        <i class="fab fa-facebook-square fa-2x"></i>
+        <i class="fab fa-twitter-square fa-2x"></i>
+        <i class="fab fa-instagram-square fa-2x"></i>
+      </div>
+    </div>
+  </div>
+  <p>&copy; 2024 HomeCareHeros. All rights reserved.</p>
+</footer>
+
+
+<script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const mainContent = document.getElementById('main-content');
+
+      if (sidebar.style.left === "-250px") {
+        sidebar.style.left = "0";
+        mainContent.style.marginLeft = "250px";
+      } else {
+        sidebar.style.left = "-250px";
+        mainContent.style.marginLeft = "0";
+      }
+    }
+  </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+					
+					
+					<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

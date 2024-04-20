@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Google Maps API (Replace YOUR_API_KEY with your actual API key) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwaJ6OddRMUxERXE7rO55N3V8e57DLqyU&callback=initMap"></script>
+    <style>
+        /* Custom styles for the contact page */
+        body {
+            padding-top: 56px; /* Adjusted for fixed navbar */
+          
+        }
+        #map {
+            height: 300px;
+            margin-bottom: 20px;
+        }
+       
+
+       
+    </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" th:href="@{/}">HomeCareHeros</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+           
+           <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Plumber</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Electrician</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Welder</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">AC Repairing</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Mechanic</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">LPG Gas Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Kitchen Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Carpenter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Labour</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Maid</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Painter</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Transport Services</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Supplier</a>
+          <a class="dropdown-item" th:href="@{/goToSignupOptions}">Water Filter Repairing</a>
+        </div>
+          
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/contact}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+             	<a class="nav-link active" th:href="@{/goToLoginOptions}">Login</a>
+            </li>
+         <li class="nav-item dropdown">
+    	<a class="nav-link active"  th:href="@{/goToSignupOptions}">Signup</a>
+    
+</li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Contact Form and Map Section -->
+<div  class="alert alert-success container mt-5" role="alert">
+ 
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Contact Us</h2>
+            <form action="#" th:action="@{/contactadd}" th:object="${contact}" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea th:field="*{message}" class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>Our Location</h2>
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<!-- Custom JavaScript for Google Maps -->
+<script th:inline="javascript">
+    
+    function initMap() {
+        // Replace the coordinates with your actual location
+        //var myLatLng = {lat: 40.7128, lng: -74.0060};
+        var myLatLng = { lat: 18.5367, lng: 73.8336 };
+
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            zoom: 15
+        });
+
+        var marker = new google.maps.Marker({
+            map: map,
+            position: myLatLng,
+            title: 'Symbiosis, Pune, India'
+        });
+    }
+
+    // Handle Google Maps API errors
+    function handleMapError() {
+        alert('Error loading Google Maps API. Please check the console for details.');
+    }
+    
+    
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwaJ6OddRMUxERXE7rO55N3V8e57DLqyU&callback=initMap"></script>
+</body>
+</html>
